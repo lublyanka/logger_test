@@ -5,12 +5,12 @@ import com.epam.rd.java.basic.topic07.task03.CheckedFunction;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 public class DBManager {
 
     private static DBManager instance;
     private final PropertiesLoader properties;
-
 
 
     private DBManager() {
@@ -27,6 +27,9 @@ public class DBManager {
     }
 
 
+    public List<String> getTables() throws DBException{
+        return execute(DAInfo::getTables);
+    }
 
     private <T> T execute(CheckedFunction<Connection, T> action) throws DBException {
         try (Connection con = DriverManager.getConnection(properties.getProperties().getProperty("connection.url"))) {

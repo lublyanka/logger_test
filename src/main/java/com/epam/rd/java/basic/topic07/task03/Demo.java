@@ -7,6 +7,7 @@ public class Demo {
 	public static void main(String[] args) throws DBException {
 
 		DBManager dbManager = DBManager.getInstance();
+		System.out.println(dbManager.getTables());
 	}
 
 }
